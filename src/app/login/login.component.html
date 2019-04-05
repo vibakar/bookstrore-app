@@ -4,6 +4,7 @@
 	<div class="card">
 	  <div class="card-header">
 	    <span *ngIf="loginForm">Login</span>
+	    <span *ngIf="newUserForm">Sign Up</span>
 	    <span *ngIf="forgetPwdForm">Forget Password</span>
 	  </div>
 	  <div class="card-block">
@@ -18,19 +19,41 @@
 		  </div>
 		  <button type="submit" class="btn btn-primary">Login</button>
 		</form>
+
+		<form *ngIf="newUserForm">
+		  <div class="form-group">
+		    <label for="username">Username</label>
+		    <input type="text" class="form-control" id="username" placeholder="Username">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Email</label>
+		    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Password</label>
+		    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword2">Confirm Password</label>
+		    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Confirm Password">
+		  </div>
+		  <button type="submit" class="btn btn-primary">Sign Up</button>
+		</form>
+
 		<form *ngIf="forgetPwdForm">
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">Email</label>
 		    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Registered Email">
-		    <small id="emailHelp" class="form-text text-muted">If email is registered with us, password reset link will be sent to your email address.</small>
+		    <small id="emailHelp" class="form-text text-muted">If entered email is registered with us, password reset link will be sent to your email address.</small>
 		  </div>
 		  <button type="submit" class="btn btn-primary">Submit</button>
 		</form>
+
 	  </div>
 	  <div class="card-footer text-muted">
-	  	<a href="javascript:void(0)">New User?</a>&nbsp;&nbsp;&nbsp;
+	  	<a href="javascript:void(0)" *ngIf="loginForm || forgetPwdForm" (click)="showNewUserForm()">New User?</a>&nbsp;&nbsp;&nbsp;
 	    <a href="javascript:void(0)" *ngIf="loginForm" (click)="forgetPwd()">Forget Password?</a>
-	    <a href="javascript:void(0)" *ngIf="forgetPwdForm" (click)="showLoginForm()">Back to Login</a>
+	    <a href="javascript:void(0)" *ngIf="forgetPwdForm || newUserForm" (click)="showLoginForm()">Login?</a>
 	  </div>
 	</div>
 </div>

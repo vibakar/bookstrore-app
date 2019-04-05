@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class LoginComponent implements OnInit {
   
   loginForm:boolean = true;
+  newUserForm:boolean = false;
   forgetPwdForm:boolean = false;
 
   constructor() { }
@@ -16,12 +17,20 @@ export class LoginComponent implements OnInit {
   }
 
   forgetPwd() {
-  	this.loginForm = false;
   	this.forgetPwdForm = true;
+  	this.loginForm = false;
+  	this.newUserForm = false;
   }
 
   showLoginForm() {
   	this.loginForm = true;
+  	this.newUserForm = false;
+  	this.forgetPwdForm = false;
+  }
+
+  showNewUserForm() {
+  	this.newUserForm = true;
+  	this.loginForm = false;
   	this.forgetPwdForm = false;
   }
 }
