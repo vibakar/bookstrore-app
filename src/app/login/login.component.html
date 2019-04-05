@@ -3,10 +3,11 @@
 	<br>
 	<div class="card">
 	  <div class="card-header">
-	    Login
+	    <span *ngIf="loginForm">Login</span>
+	    <span *ngIf="forgetPwdForm">Forget Password</span>
 	  </div>
 	  <div class="card-block">
-	   <form>
+	   <form *ngIf="loginForm">
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">Email</label>
 		    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
@@ -17,10 +18,19 @@
 		  </div>
 		  <button type="submit" class="btn btn-primary">Login</button>
 		</form>
+		<form *ngIf="forgetPwdForm">
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Email</label>
+		    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Registered Email">
+		    <small id="emailHelp" class="form-text text-muted">If email is registered with us, password reset link will be sent to your email address.</small>
+		  </div>
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		</form>
 	  </div>
 	  <div class="card-footer text-muted">
 	  	<a href="javascript:void(0)">New User?</a>&nbsp;&nbsp;&nbsp;
-	    <a href="javascript:void(0)">Forget Password?</a>
+	    <a href="javascript:void(0)" *ngIf="loginForm" (click)="forgetPwd()">Forget Password?</a>
+	    <a href="javascript:void(0)" *ngIf="forgetPwdForm" (click)="showLoginForm()">Back to Login</a>
 	  </div>
 	</div>
 </div>
